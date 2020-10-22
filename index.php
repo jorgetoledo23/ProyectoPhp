@@ -12,13 +12,20 @@
     <link rel="stylesheet" href="css/estilos.css">
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet">
-   
   </head>
   <body>
-    <form class="form-signin">
+
+  <?php
+
+    $Nombre = 'Juanito';
+
+  ?>
+
+
+    <form class="form-signin" action="insert.php" method="POST">
       <div class="text-center mb-4">
         <img class="mb-4" src="" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesion</h1>
+        <h1 class="h3 mb-3 font-weight-normal"><?php echo $Nombre ?></h1>
       </div>
 
       <div class="form-label-group">
