@@ -15,17 +15,10 @@
   </head>
   <body>
 
-  <?php
-
-    $Nombre = 'Juanito';
-
-  ?>
-
-
-    <form class="form-signin" action="insert.php" method="POST">
+     <form class="form-signin" action="controller/login.php" method="POST">
       <div class="text-center mb-4">
-        <img class="mb-4" src="" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal"><?php echo $Nombre ?></h1>
+        <img class="mb-4" src="" a  lt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesion</h1>
       </div>
 
       <div class="form-label-group">

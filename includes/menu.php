@@ -25,6 +25,24 @@
                     <a class="dropdown-item" href="#">ZXC</a>
                 </div>
                 </li>
+
+                <?php 
+                session_start();
+                if(isset($_SESSION['usuariologueado'])){ ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Hola <?php echo $_SESSION['usuariologueado'] ?></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="controller/cerrarsesion.php">Cerrar Sesion</a>
+                    </li>
+                <?php }else{ ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Iniciar Sesion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Registrarse</a>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
     </nav>
