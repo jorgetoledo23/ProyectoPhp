@@ -1,5 +1,4 @@
 <?php 
-
     if(isset($_POST['correo']) && isset($_POST['pass'])){
         $correo = $_POST['correo'];
         $pass = $_POST['pass'];
@@ -22,13 +21,4 @@
         }
 
     }
-
-
-
-    
-
-
-    
-
-
 ?>

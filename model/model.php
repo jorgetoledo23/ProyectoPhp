@@ -10,8 +10,8 @@
     }
 
     class Categoria{
-        public $CategoriaId;
-        public $Descripcion;
+        public $categoriaid;
+        public $descripcion;
     }
 
 ?>
