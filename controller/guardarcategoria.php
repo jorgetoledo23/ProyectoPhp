@@ -1,6 +1,6 @@
 <?php
 
-if(guardando){
+
     if(isset($_POST['descripcion'])){
         require_once(DAO . 'conexion.php');
 
@@ -17,14 +17,6 @@ if(guardando){
         die();
 
     }
-}
-if(editando){
-    //Editar
-}
 
-if(eliminando){
-    //eliminar
-}
-    
 
 ?>
