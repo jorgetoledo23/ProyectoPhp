@@ -14,4 +14,24 @@
         public $descripcion;
     }
 
+
+    class Region{
+        public $id;
+        public $region;
+        public $abreviatura;
+        public $capital;
+    }
+
+    class Provincia{
+        public $id;
+        public $provincia;
+        public $region_id;
+    }
+
+    class Comuna{
+        public $id;
+        public $comuna;
+        public $provincia_id;
+    }
+
 ?>

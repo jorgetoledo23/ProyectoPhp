@@ -22,7 +22,7 @@
                 <div class="dropdown-menu" aria-labelledby="dropdown08">
                     <a class="dropdown-item" href="productos.php">PRODUCTOS</a>
                     <a class="dropdown-item" href="categorias.php">CATEGORIAS</a>
-                    <a class="dropdown-item" href="#">ZXC</a>
+                    <a class="dropdown-item" href="comunas.php">COMUNAS</a>
                 </div>
                 </li>
 
