@@ -34,3 +34,8 @@ $("#provincias").on("change", function(){
     });
 
 })
+
+
+function editarCat(x){
+    alert(x);
+}

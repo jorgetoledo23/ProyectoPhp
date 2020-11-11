@@ -23,6 +23,17 @@
         <h1 class="card-header text-center">CATEGORIAS</h1>
         <h3>Agregar Categorias</h3>
         <hr>
+        <?php 
+          if(isset($_SESSION['msj'])){ ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <?php echo $_SESSION['msj']; ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php  } 
+        unset($_SESSION['msj']); ?>
+
         <form action="controller/guardarcategoria.php" method="POST">
             <div class="form-group">
                 <label for="exampleInputEmail1">Descripcion de la Categoria</label>
@@ -31,12 +42,8 @@
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
-        
-
-
 
         <h3 class="mt-5">Listado de Categorias</h3>
-
 
         <?php
             require_once(DAO . 'PDOSelect.php');
@@ -56,6 +63,7 @@
                     <tr>
                         <td><?php echo $Cat->categoriaid ?></td>
                         <td><?php echo $Cat->descripcion ?></td>
+                        <td><a href="javascript:void(0)" onclick="editarCat(<?php echo $Cat->categoriaid ?>)">Editar</a></td>
                     </tr>
                 <?php } ?>
             </tbody>
@@ -78,6 +86,6 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap.js"></script>
-
+    <script src="js/misJS.js"></script>
 </body>
 </html>
