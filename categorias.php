@@ -12,6 +12,8 @@
         <link href="css/product.css" rel="stylesheet">
         <!-- Custom styles for this template -->
         <link href="css/navbarexamples.css" rel="stylesheet">
+        <!-- Awesonme Icons -->
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 <body>
 
@@ -56,6 +58,7 @@
                 <tr>
                     <td>#</td>
                     <td>Descripcion</td>
+                    <td>Opciones</td>
                 </tr>
             </thead>
             <tbody>
@@ -63,7 +66,7 @@
                     <tr>
                         <td><?php echo $Cat->categoriaid ?></td>
                         <td><?php echo $Cat->descripcion ?></td>
-                        <td><a href="javascript:void(0)" onclick="editarCat(<?php echo $Cat->categoriaid ?>)">Editar</a></td>
+                        <td><button onclick="editarCat(<?php echo $Cat->categoriaid ?>)" id="editarCat" class="btn" href=""><i class="fas fa-edit"></i></button></td>
                     </tr>
                 <?php } ?>
             </tbody>
@@ -73,6 +76,48 @@
 
 
     </div>
+
+
+
+    <div id="editModal" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+
+            <div id="Error" style="display:none;" class="alert alert-danger alert-dismissible fade show" role="alert">
+                Error al intentar actualizar la Categoria
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+
+
+            <div class="modal-header">
+                <h5 class="modal-title">Editando la Categoria</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <form id="formEdit" action="controller/editarcategoria.php" method="POST" onsubmit="return false">
+            <input id="categoriaid" type="text" name="id" readonly hidden>
+                <div class="form-group">
+                    <label for="descripcion">Descripcion de la Categoria</label>
+                    <input type="text" name="descripcion" class="form-control" id="descripcion" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <input type="submit" class="btn btn-primary" value="Save Changes" onclick="editarCategoriaAjax()"/>
+            </div>
+            </form>
+
+            </div>
+            
+            </div>
+        </div>
+    </div>
     
     
 
@@ -81,9 +126,7 @@
 
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.bundle.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/misJS.js"></script>
