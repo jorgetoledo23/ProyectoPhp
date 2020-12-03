@@ -7,6 +7,7 @@
         $stmt = $gbd->prepare('INSERT INTO tbl_categorias (descripcion) values (:descripcion)');
         $stmt->execute([
             'descripcion' => $_POST['descripcion'],
+            'descripcion' => $_POST['descripcion'],
             ]);
         session_start();
         $_SESSION['msj'] = "Categoria almacenada con exito.";

@@ -15,12 +15,30 @@
 </head>
 <body>
 
+
+
     <?php
-        include 'includes/menu.php'
-    ?>
+        include 'includes/menu.php';
+
+        
+        if(isset($_SESSION['usuariologueadorol'])){
+            if($_SESSION['usuariologueadorol'] == 'admin'){ ?>
+
+                <!-- TODO lo que el ADMIN puede ver y hacer -->
+
+            <h1>PRODUCTOS</h1>
 
 
-    <h1>PRODUCTOS</h1>
+
+
+
+        <?php } else { ?> 
+            <h1 class="card-header text-center">Usted no tiene Acceso al siguiente Recurso. Comuniquese con su
+            Administrador.</h1>
+        <?php }
+    }else{ ?> 
+            <h1 class="card-header text-center">Inicie Sesion para acceder a este recurso.</h1>
+    <?php }  ?>    
     
 
 

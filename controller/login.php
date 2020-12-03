@@ -13,6 +13,10 @@
             $u = $user[0];
             session_start();
             $_SESSION['usuariologueado'] = $u->nombres;
+            $_SESSION['usuariologueadorol'] = $u->rol;
+
+
+
             $host = $_SERVER['HTTP_HOST'];
             $ruta = rtrim(dirname(dirname($_SERVER['PHP_SELF'])), '/\\');
             $url = "http://$host/$ruta/productos.php";

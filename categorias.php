@@ -18,66 +18,85 @@
 <body>
 
     <?php
-        include 'includes/menu.php'
+        include 'includes/menu.php';
+
+        if(isset($_SESSION['usuariologueadorol'])){
     ?>
 
-    <div class="container">
-        <h1 class="card-header text-center">CATEGORIAS</h1>
-        <h3>Agregar Categorias</h3>
-        <hr>
-        <?php 
-          if(isset($_SESSION['msj'])){ ?>
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <?php echo $_SESSION['msj']; ?>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        <?php  } 
-        unset($_SESSION['msj']); ?>
+        <div class="container">
+            <h1 class="card-header text-center">CATEGORIAS</h1>
+            <h3>Agregar Categorias</h3>
+            <hr>
+            <?php 
+            if(isset($_SESSION['msj'])){ ?>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <?php echo $_SESSION['msj']; ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php  } 
+            unset($_SESSION['msj']); ?>
 
-        <form action="controller/guardarcategoria.php" method="POST">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Descripcion de la Categoria</label>
-                <input type="text" name="descripcion" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <button type="submit" class="btn btn-primary">Guardar</button>
-        </form>
+            <form action="controller/guardarcategoria.php" method="POST">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Descripcion de la Categoria</label>
+                    <input type="text" name="descripcion" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <?php if(isset($_SESSION['usuariologueadorol'])){
+                        if($_SESSION['usuariologueadorol'] == 'admin'){ ?> 
+                
+                            <button type="submit" class="btn btn-primary">Guardar</button>
 
-        <h3 class="mt-5">Listado de Categorias</h3>
+                <?php }else{ ?>
 
-        <?php
-            require_once(DAO . 'PDOSelect.php');
-            $Categorias = selectSQL('SELECT * FROM tbl_categorias','Categoria');
-            //var_dump($Categorias);
-        ?>
+                            <button disabled type="submit" class="btn btn-primary">Guardar</button>
+                            <small id="emailHelp" class="form-text text-muted">Usted no tiene los permisos 
+                            necesarios para Almacenar nuevas categorias</small>
+                            
+                <?php }} ?>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <td>#</td>
-                    <td>Descripcion</td>
-                    <td>Opciones</td>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach($Categorias as $Cat) { ?>
+            </form>
+
+            <h3 class="mt-5">Listado de Categorias</h3>
+
+            <?php
+                require_once(DAO . 'PDOSelect.php');
+                $Categorias = selectSQL('SELECT * FROM tbl_categorias','Categoria');
+                //var_dump($Categorias);
+            ?>
+
+            <table class="table">
+                <thead>
                     <tr>
-                        <td><?php echo $Cat->categoriaid ?></td>
-                        <td><?php echo $Cat->descripcion ?></td>
-                        <td><button onclick="editarCat(<?php echo $Cat->categoriaid ?>)" id="editarCat" class="btn" href=""><i class="fas fa-edit"></i></button></td>
+                        <td>#</td>
+                        <td>Descripcion</td>
+                        <td>Opciones</td>
                     </tr>
-                <?php } ?>
-            </tbody>
-        
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach($Categorias as $Cat) { ?>
+                        <tr>
+                            <td><?php echo $Cat->categoriaid ?></td>
+                            <td><?php echo $Cat->descripcion ?></td>
+                            <td><button onclick="editarCat(<?php echo $Cat->categoriaid ?>)" id="editarCat" class="btn" href=""><i class="fas fa-edit"></i></button></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            
+            </table>
 
 
 
-    </div>
+        </div>
+    <?php } else { ?>               
 
+        <div class="container">
+            <h1 class="card-header text-center">Inicie Sesion para acceder a este recurso.</h1>
+        </div>
 
+    <?php }  ?>   
 
     <div id="editModal" class="modal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
